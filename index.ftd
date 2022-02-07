@@ -1,0 +1,151 @@
+-- import: fpm
+
+
+-- optional string english: English 
+-- optional string hindi: Hindi 
+-- optional string marathi: Marathi 
+-- optional string gujrati: Gujrati 
+
+-- ftd.column:
+padding: 20
+spacing: 20
+
+-- ftd.text: Dark Mode Switcher
+
+-- ftd.row:
+width: 500
+
+--- preview:
+
+This is some text to show you dark mode. Try clicking on the 🌙 / 🌞 above.
+
+
+-- ftd.column preview:
+body body:
+width: fill
+margin-bottom: 15
+padding: 10
+border-width: 1
+border-radius: 5
+background-color if $fpm.dark-mode: #8B8000
+background-color: yellow
+
+--- ftd.row:
+spacing: 5
+align: right
+
+--- ftd.text: Dark Mode:
+color if $fpm.dark-mode: white
+color: black
+move-down: 5
+
+--- switcher:
+
+--- container: ftd.main
+
+--- ftd.row:
+body body:
+border-bottom-radius: 5
+width: fill
+
+--- ftd.text:
+color if $fpm.dark-mode: white
+color: black
+
+$body
+
+
+
+
+
+
+
+
+-- ftd.row switcher:
+boolean open: false
+
+--- ftd.text: En🌐 
+/if: $english-open
+move-up: 2
+$event-click$: toggle $open
+
+/--- ftd.text: .
+color if not $fpm.follow-system-dark-mode: black
+color: rgba(0, 0, 0, 0)
+
+
+--- ftd.column:
+if: $open
+background-color: white
+border-radius: 4
+border-width: 1
+border-color: #cccccc
+width: 200
+border-width: 1
+border-radius: 4
+anchor: parent
+position: bottom
+
+--- active: Active Language
+link: /
+
+--- t: $english
+$event-click$: message-host enable-dark-mode
+$event-click$: $open=false
+
+--- t: $hindi
+$event-click$: message-host enable-light-mode
+$event-click$: $open=false
+
+--- t: $marathi
+/if: not $fpm.system-dark-mode
+$event-click$: message-host enable-system-mode
+$event-click$: $open=false
+
+--- t: $gujrati
+/if: $fpm.system-dark-mode
+$event-click$: message-host enable-system-mode
+$event-click$: $open=false
+
+--- footer: Translation Status
+link: /
+
+-- ftd.row t: 
+caption text: 
+width: fill
+border-color if $MOUSE-IN: #ff0000
+border-width: 1
+border-color: #ffffff
+border-radius: 4
+background-color if $MOUSE-IN: #f2f2f2
+padding-horizontal: 10
+padding-vertical: 8
+
+
+--- ftd.text: 🔵
+line-height: 24
+padding-right: 10
+
+--- ftd.text: $text
+width: fill
+line-height: 24
+
+-- ftd.text active: $activetext
+width: fill
+caption activetext:
+string link:
+link: $link
+border-bottom: 1
+border-color: #ddd
+padding-vertical: 8
+padding-horizontal: 10
+
+-- ftd.text footer: $footer
+string link:
+link: $link
+width: fill
+caption footer:
+border-top: 1
+border-color: #ddd
+padding-vertical: 8
+padding-horizontal: 10
