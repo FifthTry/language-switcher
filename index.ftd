@@ -10,7 +10,7 @@
 padding: 20
 spacing: 20
 
--- ftd.text: Dark Mode Switcher
+-- ftd.text: Language Switcher
 
 -- ftd.row:
 width: 500
@@ -34,10 +34,9 @@ background-color: yellow
 spacing: 5
 align: right
 
---- ftd.text: Dark Mode:
+--- ftd.text: Language:
 color if $fpm.dark-mode: white
 color: black
-move-down: 5
 
 --- switcher:
 
