@@ -121,7 +121,7 @@ url: $o.url
 
 
 --- footer: Translation Status
-link: /
+link: $fpm.translation-status-url
 
 -- ftd.row t: 
 caption text: 
