@@ -1,10 +1,18 @@
 -- import: fpm
 
 
--- optional string english: English 
--- optional string hindi: Hindi 
--- optional string marathi: Marathi 
--- optional string gujrati: Gujrati 
+
+
+-- fpm.language-toc-item list languages:
+
+-- languages: English
+url: /
+
+-- languages: Hindi
+url: /hi/
+
+-- languages: Spanish
+url: /es/
 
 -- ftd.column:
 padding: 20
@@ -19,6 +27,10 @@ width: 500
 
 This is language dropdown. Try clicking on the En🌐 above.
 
+-- switcher:
+languages: $languages
+current: EN
+position: bottom-right
 
 -- ftd.column preview:
 body body:
@@ -39,6 +51,8 @@ color if $fpm.dark-mode: white
 color: black
 
 --- switcher:
+languages: $languages
+current: EN
 
 --- container: ftd.main
 
@@ -62,11 +76,24 @@ $body
 
 -- ftd.row switcher:
 boolean open: false
+fpm.language-toc-item list languages: $fpm.language-toc
+optional string current: $fpm.language
+string position: bottom
+if: $languages is not empty
 
---- ftd.text: En🌐 
+
+--- ftd.row:
+spacing: 4
+$event-click$: toggle $open
+
+--- ftd.text: 🌐
+move-up: 7
+
+--- ftd.text: $current
 /if: $english-open
 move-up: 2
-$event-click$: toggle $open
+
+--- container: ftd.main
 
 /--- ftd.text: .
 color if not $fpm.follow-system-dark-mode: black
@@ -83,34 +110,22 @@ width: 200
 border-width: 1
 border-radius: 4
 anchor: parent
-position: bottom
+position: $position
 
 --- active: Active Language
 link: /
 
---- t: $english
-$event-click$: message-host enable-dark-mode
-$event-click$: $open=false
+--- t: $o.title
+$loop$: $languages as $o
+url: $o.url
 
---- t: $hindi
-$event-click$: message-host enable-light-mode
-$event-click$: $open=false
-
---- t: $marathi
-/if: not $fpm.system-dark-mode
-$event-click$: message-host enable-system-mode
-$event-click$: $open=false
-
---- t: $gujrati
-/if: $fpm.system-dark-mode
-$event-click$: message-host enable-system-mode
-$event-click$: $open=false
 
 --- footer: Translation Status
 link: /
 
 -- ftd.row t: 
 caption text: 
+string url:
 width: fill
 border-color if $MOUSE-IN: #ff0000
 border-width: 1
@@ -124,10 +139,13 @@ padding-vertical: 8
 --- ftd.text: 🔵
 line-height: 24
 padding-right: 10
+link: $url
 
 --- ftd.text: $text
 width: fill
 line-height: 24
+link: $url
+
 
 -- ftd.text active: $activetext
 width: fill
