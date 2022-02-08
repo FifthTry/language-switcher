@@ -3,6 +3,7 @@
 
 
 
+
 -- fpm.language-toc-item list languages:
 
 -- languages: English
@@ -18,6 +19,8 @@ url: /es/
 padding: 20
 spacing: 20
 
+
+
 -- ftd.text: Language Switcher
 
 -- ftd.row:
@@ -26,6 +29,7 @@ width: 500
 --- preview:
 
 This is language dropdown. Try clicking on the En🌐 above..
+
 
 -- switcher:
 languages: $languages
@@ -41,6 +45,30 @@ border-width: 1
 border-radius: 5
 background-color if $fpm.dark-mode: #8B8000
 background-color: yellow
+
+
+--- ftd.row:
+spacing: 5
+width: fill
+
+--- ftd.text: Switch mode:
+
+--- ftd.image:
+if: not $fpm.dark-mode
+/src: https://res.cloudinary.com/dphj6havg/image/upload/v1640938217/dark-mode_mfy9hd.svg
+src: https://res.cloudinary.com/dphj6havg/image/upload/v1641367492/light-mode_o0zne7.svg
+height: 18
+$event-click$: message-host enable-dark-mode
+align: center
+
+--- ftd.image:
+if:  $fpm.dark-mode
+src: https://res.cloudinary.com/dphj6havg/image/upload/v1641367492/light-mode_o0zne7.svg
+height: 18
+$event-click$: message-host enable-light-mode
+align: center
+
+--- container: ftd.main
 
 --- ftd.row:
 spacing: 5
@@ -103,16 +131,18 @@ color: rgba(0, 0, 0, 0)
 --- ftd.column:
 if: $open
 background-color: white
+background-color if $fpm.dark-mode: #37474F
 border-radius: 4
 border-width: 1
 border-color: #cccccc
+border-color if $fpm.dark-mode: #90A4AE
 width: 200
 border-width: 1
 border-radius: 4
 anchor: parent
 position: $position
 
---- active: $current
+/--- active: $current
 url: /
 
 --- t: $o.title
@@ -127,13 +157,17 @@ link: $fpm.translation-status-url
 caption text: 
 string url:
 width: fill
-border-color if $MOUSE-IN: #ff0000
 border-width: 1
 border-color: #ffffff
 border-radius: 4
 background-color if $MOUSE-IN: #f2f2f2
 padding-horizontal: 10
 padding-vertical: 8
+border-color if $MOUSE-IN: #ff0000
+/if: $fpm.dark-mode
+border-color if $MOUSE-IN: #90A4AE
+background-color if $MOUSE-IN: #B0BEC5
+border-color: #607D8B
 
 
 --- ftd.text: 🔘
@@ -153,6 +187,7 @@ link: $url
 caption text: 
 string url:
 width: fill
+border-radius: 4
 border-bottom: 1
 border-color: #ddd
 padding-vertical: 8
@@ -160,12 +195,12 @@ padding-horizontal: 10
 background-color if $MOUSE-IN: #f2f2f2
 
 
---- ftd.text: 🞇
+--- ftd.text: 🔘
 line-height: 24
 padding-right: 10
 link: $url
 color: black
-size: 26
+size: 16
 
 --- ftd.text: $text
 width: fill
@@ -177,6 +212,7 @@ string link:
 link: $link
 width: fill
 caption footer:
+border-bottom-radius: 4
 border-top: 1
 border-color: #ddd
 padding-vertical: 8
