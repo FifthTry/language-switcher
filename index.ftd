@@ -25,7 +25,7 @@ width: 500
 
 --- preview:
 
-This is language dropdown. Try clicking on the En🌐 above.
+This is language dropdown. Try clicking on the En🌐 above..
 
 -- switcher:
 languages: $languages
