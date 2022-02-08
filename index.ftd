@@ -112,8 +112,8 @@ border-radius: 4
 anchor: parent
 position: $position
 
---- active: Active Language
-link: /
+--- active: $current
+url: /
 
 --- t: $o.title
 $loop$: $languages as $o
@@ -136,10 +136,11 @@ padding-horizontal: 10
 padding-vertical: 8
 
 
---- ftd.text: 🔵
+--- ftd.text: 🔘
 line-height: 24
 padding-right: 10
 link: $url
+size: 16
 
 --- ftd.text: $text
 width: fill
@@ -147,15 +148,29 @@ line-height: 24
 link: $url
 
 
--- ftd.text active: $activetext
+
+-- ftd.row active: 
+caption text: 
+string url:
 width: fill
-caption activetext:
-string link:
-link: $link
 border-bottom: 1
 border-color: #ddd
 padding-vertical: 8
 padding-horizontal: 10
+background-color if $MOUSE-IN: #f2f2f2
+
+
+--- ftd.text: 🞇
+line-height: 24
+padding-right: 10
+link: $url
+color: black
+size: 26
+
+--- ftd.text: $text
+width: fill
+line-height: 24
+link: $url
 
 -- ftd.text footer: $footer
 string link:
@@ -166,3 +181,5 @@ border-top: 1
 border-color: #ddd
 padding-vertical: 8
 padding-horizontal: 10
+background-color if $MOUSE-IN: #f2f2f2
+line-height: 24
