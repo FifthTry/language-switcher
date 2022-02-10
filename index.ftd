@@ -153,12 +153,13 @@ url: $o.url
 --- footer: Translation Status
 link: $fpm.translation-status-url
 
--- ftd.row t: 
+-- ftd.row t:
+spacing: 5 
 caption text: 
 string url:
 width: fill
-border-width: 1
-border-color: #ffffff
+/border-width: 
+/border-color: #ffffff
 border-radius: 4
 background-color if $MOUSE-IN: #f2f2f2
 padding-horizontal: 10
@@ -170,7 +171,15 @@ background-color if $MOUSE-IN: #B0BEC5
 border-color: #607D8B
 
 
---- ftd.text: 🔘
+--- ftd.text: .
+border-width: 1
+border-color: #ccc
+width: 18
+height: 18
+background-color: #ddd
+align: center
+color: #ddd
+border-radius: 500
 line-height: 24
 padding-right: 10
 link: $url
