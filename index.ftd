@@ -168,17 +168,21 @@ border-color if $MOUSE-IN: #ff0000
 /if: $fpm.dark-mode
 border-color if $MOUSE-IN: #90A4AE
 background-color if $MOUSE-IN: #B0BEC5
+color if $MOUSE-IN: #CCCCCC
 border-color: #607D8B
 
 
 --- ftd.text: .
 border-width: 1
-border-color: #ccc
+border-color: #CCCCCC
+border-color if $fpm.dark-mode: #A9A9A9
 width: 18
 height: 18
 background-color: #ddd
+background-color if $fpm.dark-mode: #828282
 align: center
-color: #ddd
+color: #ffffff
+color if $fpm.dark-mode: #37474F
 border-radius: 500
 line-height: 24
 padding-right: 10
