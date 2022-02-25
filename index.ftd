@@ -58,14 +58,14 @@ if: not $fpm.dark-mode
 /src: https://res.cloudinary.com/dphj6havg/image/upload/v1640938217/dark-mode_mfy9hd.svg
 src: https://res.cloudinary.com/dphj6havg/image/upload/v1641367492/light-mode_o0zne7.svg
 height: 18
-$event-click$: message-host enable-dark-mode
+$on-click$: message-host enable-dark-mode
 align: center
 
 --- ftd.image:
 if:  $fpm.dark-mode
 src: https://res.cloudinary.com/dphj6havg/image/upload/v1641367492/light-mode_o0zne7.svg
 height: 18
-$event-click$: message-host enable-light-mode
+$on-click$: message-host enable-light-mode
 align: center
 
 --- container: ftd.main
@@ -112,7 +112,7 @@ if: $languages is not empty
 
 --- ftd.row:
 spacing: 4
-$event-click$: toggle $open
+$on-click$: toggle $open
 
 --- ftd.text: 🌐
 move-up: 7
