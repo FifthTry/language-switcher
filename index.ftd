@@ -32,9 +32,10 @@ This is language dropdown. Try clicking on the En🌐 above..
 
 -- switcher:
 languages: $languages
-current: EN
+current: English
 position: bottom-right
 font: Roboto
+size: 14
 
 
 -- ftd.column preview:
@@ -108,15 +109,18 @@ boolean open: false
 fpm.toc-item list languages: $fpm.language-toc
 optional string current: $fpm.language
 string position: bottom
-string dark-radio-default: -/language-switcher/images/dropdown-icons/dark/radio-default.png
-string dark-radio-active: -/language-switcher/images/dropdown-icons/dark/radio-active.png
-string light-radio-default: -/language-switcher/images/dropdown-icons/light/radio-default.png
-string light-radio-active: -/language-switcher/images/dropdown-icons/light/radio-active.png
-string dark-polygon-arrow: -/language-switcher/images/dropdown-icons/dark/polygon-arrow.png
-string light-polygon-arrow: -/language-switcher/images/dropdown-icons/light/polygon-arrow.png
-string dark-menu-arrow: -/language-switcher/images/dropdown-icons/dark/lang-menu-arrow.png
-string light-menu-arrow: -/language-switcher/images/dropdown-icons/light/lang-menu-arrow.png
+string dark-radio-default: -/fifthtry.github.io/language-switcher/images/dropdown-icons/dark/radio-default.png
+string dark-radio-active: -/fifthtry.github.io/language-switcher/images/dropdown-icons/dark/radio-active.png
+string light-radio-default: -/fifthtry.github.io/language-switcher/images/dropdown-icons/light/radio-default.png
+string light-radio-active: -/fifthtry.github.io/language-switcher/images/dropdown-icons/light/radio-active.png
+string dark-polygon-up: -/fifthtry.github.io/language-switcher/images/dropdown-icons/dark/polygon-up.png
+string light-polygon-up: -/fifthtry.github.io/language-switcher/images/dropdown-icons/light/polygon-up.png
+string dark-polygon-down: -/fifthtry.github.io/language-switcher/images/dropdown-icons/dark/polygon-down.png
+string light-polygon-down: -/fifthtry.github.io/language-switcher/images/dropdown-icons/light/polygon-down.png
+string dark-lang-icon: -/fifthtry.github.io/language-switcher/images/dropdown-icons/dark/lang-icon.png
+string light-lang-icon: -/fifthtry.github.io/language-switcher/images/dropdown-icons/light/lang-icon.png
 string font: Roboto 
+integer size: 14
 if: $languages is not empty
 
 
@@ -124,31 +128,35 @@ if: $languages is not empty
 spacing: 4
 $on-click$: toggle $open
 $on-click-outside$: $open = false
+z-index: 10
 
 
 --- ftd.image: 
 if: not $fpm.dark-mode
-src: $light-menu-arrow
+src: $light-lang-icon
 move-up: 7
+move-right: 50
+anchor: window
+left: 0
+top: 0
 
 --- ftd.image: 
 if: $fpm.dark-mode
-src: $dark-menu-arrow
+src: $dark-lang-icon
 move-up: 7
+move-right: 50
+anchor: window
+left: 0
+top: 0
 
 
-/--- ftd.text: $current
-/if: $english-open
-move-up: 2
+--- ftd.text: $current
+if: $current is not null
 font: $font
+size: 24
+line-height: 28
 
 --- container: ftd.main
-
-/--- ftd.text: .
-color if not $fpm.follow-system-dark-mode: black
-color: rgba(0, 0, 0, 0)
-font: $font
-
 
 --- ftd.column:
 if: $open
@@ -158,7 +166,7 @@ border-radius: 4
 border-width: 1
 border-color: #F2F2F2
 border-color if $fpm.dark-mode: #2E2D2D
-width: 200
+width: 180
 border-width: 1
 border-radius: 4
 anchor: parent
@@ -169,17 +177,17 @@ shadow-size: 1
 shadow-blur: 8
 shadow-color: rgba (0, 0, 0, 0.25)
 
-
 --- ftd.image:
 if: not $fpm.dark-mode
-src: $light-polygon-arrow
-move-up: 10
-
+src: $light-polygon-up
+move-up: 20
+move-right: 20
 
 --- ftd.image:
 if: $fpm.dark-mode
-src: $dark-polygon-arrow
-move-up: 10
+src: $dark-polygon-up
+move-up: 20
+move-right: 20
 
 
 --- active: $current
@@ -187,62 +195,106 @@ dark-radio-active: $dark-radio-active
 light-radio-active: $light-radio-active
 font: $font
 url: /
+size: $size
 
 
 --- t: $o.title
 $loop$: $languages as $o
 url: $o.url
 font: $font
+size: $size
+dark-radio-default: $dark-radio-default
+dark-radio-active: $dark-radio-active
+light-radio-default: $light-radio-default
+light-radio-active: $light-radio-active
 
 
---- footer: Translation Status
+--- footer: View Translation Status
 link: $fpm.translation-status-url
 font: $font
+size: $size
 
 
 -- ftd.row t:
 spacing: 5 
 caption text: 
 string url:
+string dark-radio-default: 
+string dark-radio-active: 
+string light-radio-default: 
+string light-radio-active: 
 string font:
+integer size:
 width: fill
-/border-width: 
-/border-color: #ffffff
-border-radius: 4
-background-color if $MOUSE-IN: #f2f2f2
 padding-horizontal: 10
 padding-vertical: 8
-border-color if $MOUSE-IN: #ff0000
-/if: $fpm.dark-mode
-border-color if $MOUSE-IN: #90A4AE
-background-color if $MOUSE-IN: #B0BEC5
-color if $MOUSE-IN: #CCCCCC
-border-color: #607D8B
+boolean showactive: false
+$on-mouse-enter$: $showactive = true
+$on-mouse-leave$: $showactive = false
 
 
---- ftd.text: .
-border-width: 1
-border-color: #CCCCCC
-border-color if $fpm.dark-mode: #A9A9A9
-width: 18
-height: 18
-background-color: #ddd
-background-color if $fpm.dark-mode: #828282
-align: center
-color: #ffffff
-color if $fpm.dark-mode: #37474F
-border-radius: 500
-line-height: 24
+--- ftd.row:
+if: not $showactive
+
+
+--- ftd.image:
+if: not $fpm.dark-mode
+src: $light-radio-default
 padding-right: 10
-link: $url
-size: 16
-font: $font
+
+
+--- ftd.image:
+if: $fpm.dark-mode
+src: $dark-radio-default
+padding-right: 10
+
 
 --- ftd.text: $text
 width: fill
-line-height: 24
+line-height: 16
 link: $url
 font: $font
+color: #6C7384
+color if $fpm.dark-mode: #FFFFFF
+size: $size
+
+
+--- container: ftd.main
+
+--- ftd.row:
+if: $showactive
+
+
+--- ftd.image:
+if: not $fpm.dark-mode
+src: $light-radio-active
+padding-right: 10
+
+
+--- ftd.image:
+if: $fpm.dark-mode
+src: $dark-radio-active
+padding-right: 10
+
+
+--- ftd.text: $text
+width: fill
+line-height: 16
+link: $url
+font: $font
+color: #F29E35
+color if $fpm.dark-mode: #FFE58D
+size: $size
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -251,14 +303,20 @@ caption text:
 string url:
 string font:
 width: fill
-border-radius: 4
-border-bottom: 1
-border-color: #ddd
-padding-vertical: 8
-padding-horizontal: 10
-background-color if $MOUSE-IN: #f2f2f2
+padding-vertical: 10
+padding-bottom: 0
+padding-horizontal: 15
 string light-radio-active:
 string dark-radio-active:
+integer size:
+
+
+--- ftd.row:
+width: fill
+border-bottom: 1
+border-color: #EBEBEB
+border-color if $fpm.dark-mode: #343434
+padding-bottom: 10
 
 
 --- ftd.image:
@@ -274,21 +332,43 @@ padding-right: 10
 
 --- ftd.text: $text
 width: fill
-line-height: 24
+line-height: 16
 link: $url
 font: $font
+size: $size
 
--- ftd.text footer: $footer
+
+
+
+
+
+
+
+
+
+-- ftd.row footer: $footer
+caption footer:
 string link:
 string font:
-link: $link
+integer size:
 width: fill
-caption footer:
-border-bottom-radius: 4
+padding-vertical: 10
+padding-top: 0
+padding-horizontal: 15
+
+--- ftd.row:
+width: fill
 border-top: 1
-border-color: #ddd
-padding-vertical: 8
-padding-horizontal: 10
-background-color if $MOUSE-IN: #f2f2f2
-line-height: 24
+border-color: #EBEBEB
+border-color if $fpm.dark-mode: #343434
+padding-top: 10
+
+--- ftd.text: $footer
+width: fill
+line-height: 16
+link: $link
+font: $font
+size: $size
+
+
 
