@@ -4,16 +4,15 @@
 
 
 
--- fpm.language-toc-item list languages:
+-- fpm.toc-item list languages:
+$processor$: toc
 
--- languages: English
-url: /
+- English: /
+- Hindi: /hi
+- Spanish: /es
+- German: /de
 
--- languages: Hindi
-url: /hi/
 
--- languages: Spanish
-url: /es/
 
 -- ftd.column:
 padding: 20
@@ -35,6 +34,8 @@ This is language dropdown. Try clicking on the En🌐 above..
 languages: $languages
 current: EN
 position: bottom-right
+font: Roboto
+
 
 -- ftd.column preview:
 body body:
@@ -100,63 +101,110 @@ $body
 
 
 
-
+	
 
 -- ftd.row switcher:
 boolean open: false
-fpm.language-toc-item list languages: $fpm.language-toc
+fpm.toc-item list languages: $fpm.language-toc
 optional string current: $fpm.language
 string position: bottom
+string dark-radio-default: -/language-switcher/images/dropdown-icons/dark/radio-default.png
+string dark-radio-active: -/language-switcher/images/dropdown-icons/dark/radio-active.png
+string light-radio-default: -/language-switcher/images/dropdown-icons/light/radio-default.png
+string light-radio-active: -/language-switcher/images/dropdown-icons/light/radio-active.png
+string dark-polygon-arrow: -/language-switcher/images/dropdown-icons/dark/polygon-arrow.png
+string light-polygon-arrow: -/language-switcher/images/dropdown-icons/light/polygon-arrow.png
+string dark-menu-arrow: -/language-switcher/images/dropdown-icons/dark/lang-menu-arrow.png
+string light-menu-arrow: -/language-switcher/images/dropdown-icons/light/lang-menu-arrow.png
+string font: Roboto 
 if: $languages is not empty
 
 
 --- ftd.row:
 spacing: 4
 $on-click$: toggle $open
+$on-click-outside$: $open = false
 
---- ftd.text: 🌐
+
+--- ftd.image: 
+if: not $fpm.dark-mode
+src: $light-menu-arrow
 move-up: 7
 
---- ftd.text: $current
+--- ftd.image: 
+if: $fpm.dark-mode
+src: $dark-menu-arrow
+move-up: 7
+
+
+/--- ftd.text: $current
 /if: $english-open
 move-up: 2
+font: $font
 
 --- container: ftd.main
 
 /--- ftd.text: .
 color if not $fpm.follow-system-dark-mode: black
 color: rgba(0, 0, 0, 0)
+font: $font
 
 
 --- ftd.column:
 if: $open
-background-color: white
-background-color if $fpm.dark-mode: #37474F
+background-color: #FFFFFF
+background-color if $fpm.dark-mode: #232324
 border-radius: 4
 border-width: 1
-border-color: #cccccc
-border-color if $fpm.dark-mode: #90A4AE
+border-color: #F2F2F2
+border-color if $fpm.dark-mode: #2E2D2D
 width: 200
 border-width: 1
 border-radius: 4
 anchor: parent
 position: $position
+shadow-offset-x: 3
+shadow-offset-y: 0
+shadow-size: 1
+shadow-blur: 8
+shadow-color: rgba (0, 0, 0, 0.25)
 
-/--- active: $current
+
+--- ftd.image:
+if: not $fpm.dark-mode
+src: $light-polygon-arrow
+move-up: 10
+
+
+--- ftd.image:
+if: $fpm.dark-mode
+src: $dark-polygon-arrow
+move-up: 10
+
+
+--- active: $current
+dark-radio-active: $dark-radio-active
+light-radio-active: $light-radio-active
+font: $font
 url: /
+
 
 --- t: $o.title
 $loop$: $languages as $o
 url: $o.url
+font: $font
 
 
 --- footer: Translation Status
 link: $fpm.translation-status-url
+font: $font
+
 
 -- ftd.row t:
 spacing: 5 
 caption text: 
 string url:
+string font:
 width: fill
 /border-width: 
 /border-color: #ffffff
@@ -188,17 +236,20 @@ line-height: 24
 padding-right: 10
 link: $url
 size: 16
+font: $font
 
 --- ftd.text: $text
 width: fill
 line-height: 24
 link: $url
+font: $font
 
 
 
 -- ftd.row active: 
 caption text: 
 string url:
+string font:
 width: fill
 border-radius: 4
 border-bottom: 1
@@ -206,22 +257,30 @@ border-color: #ddd
 padding-vertical: 8
 padding-horizontal: 10
 background-color if $MOUSE-IN: #f2f2f2
+string light-radio-active:
+string dark-radio-active:
 
 
---- ftd.text: 🔘
-line-height: 24
+--- ftd.image:
+if: not $fpm.dark-mode
+src: $light-radio-active
 padding-right: 10
-link: $url
-color: black
-size: 16
+
+--- ftd.image:
+if: $fpm.dark-mode
+src: $dark-radio-active
+padding-right: 10
+
 
 --- ftd.text: $text
 width: fill
 line-height: 24
 link: $url
+font: $font
 
 -- ftd.text footer: $footer
 string link:
+string font:
 link: $link
 width: fill
 caption footer:
@@ -232,3 +291,4 @@ padding-vertical: 8
 padding-horizontal: 10
 background-color if $MOUSE-IN: #f2f2f2
 line-height: 24
+
