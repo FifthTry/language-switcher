@@ -33,9 +33,10 @@ This is language dropdown. Try clicking on the En🌐 above..
 -- switcher:
 languages: $languages
 current: English
-position: bottom-right
+position: bottom
 font: Roboto
 size: 14
+margin-position-left: 45
 
 
 -- ftd.column preview:
@@ -83,6 +84,7 @@ color: black
 --- switcher:
 languages: $languages
 current: EN
+margin-position-right: -45
 
 --- container: ftd.main
 
@@ -123,7 +125,8 @@ string font: Roboto
 integer size: 14
 if: $languages is not empty
 z-index: 99999
-
+optional integer margin-position-right: 
+optional integer margin-position-left: 
 
 --- ftd.row:
 spacing: 4
@@ -172,6 +175,9 @@ shadow-offset-y: 0
 shadow-size: 1
 shadow-blur: 8
 shadow-color: rgba (0, 0, 0, 0.25)
+margin-right: $margin-position-right
+margin-left: $margin-position-left
+
 
 --- ftd.image:
 if: not $fpm.dark-mode
