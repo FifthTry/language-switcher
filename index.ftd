@@ -168,7 +168,7 @@ border-color: #F2F2F2
 border-color if $fpm.dark-mode: #2E2D2D
 width: 180
 border-width: 1
-border-radius: 4
+border-radius: 6
 anchor: parent
 position: $position
 shadow-offset-x: 3
