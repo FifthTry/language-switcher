@@ -209,7 +209,7 @@ light-radio-default: $light-radio-default
 light-radio-active: $light-radio-active
 
 
---- footer: View Translation Status
+--- footer: Translation Status
 link: $fpm.translation-status-url
 font: $font
 size: $size
