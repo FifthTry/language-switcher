@@ -1,4 +1,105 @@
 -- import: fpm
+-- import: fifthtry.github.io/package-doc/doc as pd
+
+-- ftd.column:
+padding-horizontal: 50
+padding-vertical: 20
+width: fill
+
+-- pd.package: Language Switcher
+name: fifthtry.github.io/language-switcher
+
+This component can be used as a site language switcher.
+
+
+-- pd.component: Language Switcher
+name: fifthtry.github.io/language-switcher.switcher
+
+This is the main language switcher.
+
+
+
+-- pd.hidden-code: toc definitions
+
+
+\-- fpm.toc-item list languages:
+$processor$: toc
+
+- English: /
+- Hindi: /hi
+- Spanish: /es
+- German: /de
+
+
+
+
+-- pd.output: Basic usage example
+reference: -/fifthtry.github.io/language-switcher/images/language-switcher-light.png
+reference-width: 200
+
+\-- switcher:
+languages: $languages
+current: English
+position: bottom
+font: Roboto
+size: 14
+margin-position-left: 50
+position-left: false
+position-right: true
+color: #000000
+dark-color: #FFFFFF
+
+
+
+--- switcher:
+languages: $languages
+current: English
+position: bottom
+font: Roboto
+size: 14
+margin-position-left: 50
+position-left: false
+position-right: true
+color: #000000
+dark-color: #FFFFFF
+
+
+
+
+/-- ftd.column:
+background-color: #f5f5f5
+background-color if $fpm.dark-mode: #2b303b
+margin-top: -90
+margin-bottom: 100
+margin-left: 100
+
+/--- switcher:
+languages: $languages
+current: English
+position: bottom
+font: Roboto
+size: 14
+margin-position-left: 50
+position-left: false
+position-right: true
+color: #000000
+dark-color: #FFFFFF
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -142,6 +243,8 @@ optional integer margin-position-right:
 optional integer margin-position-left: 
 boolean position-right: false
 boolean position-left: false
+string color: #333333
+string dark-color: #FFFFFF 
 
 
 
@@ -178,8 +281,8 @@ font: $font
 size: 24
 line-height: 28
 padding-right: 5
-color: #ffffff
-color $fpm.dark-mode: #FFFFFF
+color: $color
+color $fpm.dark-mode: $dark-color
 
 --- ftd.column:
 if: $open
