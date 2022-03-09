@@ -5,6 +5,8 @@ zip: github.com/fifthtry/language-switcher/archive/refs/heads/main.zip
 
 -- fpm.dependency: fifthtry.github.io/package-doc
 
+-- fpm.dependency: fifthtry.github.io/roboto
+
 
 -- fpm.font: Roboto
 style: normal
