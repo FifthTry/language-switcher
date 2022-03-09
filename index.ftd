@@ -1,5 +1,6 @@
 -- import: fpm
 -- import: fifthtry.github.io/package-doc/doc as pd
+-- import: fifthtry.github.io/roboto/assets as roboto-assets
 
 -- ftd.column:
 padding-horizontal: 50
@@ -44,7 +45,7 @@ languages: $languages
 current: English
 switcher-text: EN
 position: bottom
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 size: 14
 margin-position-left: 50
 position-left: false
@@ -59,7 +60,7 @@ languages: $languages
 current: English
 switcher-text: EN
 position: bottom
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 size: 14
 margin-position-left: 50
 position-left: false
@@ -82,7 +83,7 @@ languages: $languages
 current: English
 switcher-text: EN
 position: bottom
-font: Roboto
+font: $roboto-assets.fonts.Roboto
 size: 14
 margin-position-left: 50
 position-left: false
@@ -142,7 +143,7 @@ string dark-polygon-down: -/fifthtry.github.io/language-switcher/images/dropdown
 string light-polygon-down: -/fifthtry.github.io/language-switcher/images/dropdown-icons/light/polygon-down.png
 string dark-lang-icon: -/fifthtry.github.io/language-switcher/images/dropdown-icons/dark/lang-icon.png
 string light-lang-icon: -/fifthtry.github.io/language-switcher/images/dropdown-icons/light/lang-icon.png
-string font: Roboto 
+string font: $roboto-assets.fonts.Roboto 
 integer size: 14
 if: $languages is not empty
 z-index: 99999
