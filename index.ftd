@@ -130,6 +130,7 @@ width if $fpm.mobile: fill
 
 --- ftd.column:
 spacing: 4
+width: fill
 $on-click$: toggle $open
 $on-click-outside$: $open = false
 
@@ -190,27 +191,28 @@ if: $fpm.mobile
 width: fill
 
 --- ftd.column:
-width: fill
+if: not $open
 anchor: parent
 right: 30
 bottom: 8
 
-
 --- ftd.image:
-src: -/fifthtry.github.io/language-switcher/mobile-menu-arrw-right.png
+src: -/fifthtry.github.io/language-switcher/images/mobile-menu-arrw-right.png
 
 --- container: ftd.main
 
 --- ftd.column:
-if: $open
+if: $fpm.mobile
 width: fill
+
+--- ftd.column:
+if: $open
 anchor: parent
 right: 30
-bottom: 8
-
+top: 15
 
 --- ftd.image:
-src: -/fifthtry.github.io/language-switcher/mobile-menu-arrw-up.png
+src: -/fifthtry.github.io/language-switcher/images/mobile-menu-arrw-up.png
 
 
 --- container: ftd.main
