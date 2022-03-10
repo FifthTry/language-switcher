@@ -125,14 +125,13 @@ string color: #333333
 string dark-color: #FFFFFF 
 optional string switcher-text: $fpm.language
 width if $fpm.mobile: fill
+$on-click$: toggle $open
+$on-click-outside$: $open = false
 
 
 
 --- ftd.column:
 spacing: 4
-width: fill
-$on-click$: toggle $open
-$on-click-outside$: $open = false
 
 --- ftd.image: 
 if: not $fpm.dark-mode
@@ -209,7 +208,7 @@ width: fill
 if: $open
 anchor: parent
 right: 30
-top: 15
+top: -25
 
 --- ftd.image:
 src: -/fifthtry.github.io/language-switcher/images/mobile-menu-arrw-up.png
@@ -249,7 +248,8 @@ url: /
 size: $size
 
 
---- t: $o.title
+--- lang-list-desktop: $o.title
+if: not $fpm.mobile
 $loop$: $languages as $o
 url: $o.url
 font: $font
@@ -258,6 +258,13 @@ dark-radio-default: $dark-radio-default
 dark-radio-active: $dark-radio-active
 light-radio-default: $light-radio-default
 light-radio-active: $light-radio-active
+
+
+--- footer: Translation Status
+link: $fpm.translation-status-url
+font: $font
+size: $size
+
 
 --- container: ftd.main
 
@@ -276,7 +283,8 @@ url: /
 size: $size
 
 
---- t: $o.title
+--- lang-list-desktop: $o.title
+if: not $fpm.mobile
 $loop$: $languages as $o
 url: $o.url
 font: $font
@@ -287,13 +295,20 @@ light-radio-default: $light-radio-default
 light-radio-active: $light-radio-active
 
 
+--- lang-list-mobile: $o.title
+if: $fpm.mobile
+$loop$: $languages as $o
+url: $o.url
+font: $font
+size: $size
+
 --- footer: Translation Status
 link: $fpm.translation-status-url
 font: $font
 size: $size
 
 
--- ftd.row t:
+-- ftd.row lang-list-desktop:
 spacing: 5 
 caption text: 
 string url:
@@ -366,6 +381,48 @@ size: $size
 
 
 
+-- ftd.row lang-list-mobile:
+spacing: 5 
+caption text: 
+string url:
+string font:
+integer size:
+width: fill
+padding-horizontal: 10
+padding-vertical: 8
+boolean showactive: false
+$on-mouse-enter$: $showactive = true
+$on-mouse-leave$: $showactive = false
+
+
+--- ftd.row:
+if: not $showactive
+
+--- ftd.text: $text
+width: fill
+line-height: 16
+link: $url
+font: $font
+color: #6C7384
+color if $fpm.dark-mode: #FFFFFF
+size: $size
+
+
+--- container: ftd.main
+
+--- ftd.row:
+if: $showactive
+
+--- ftd.text: $text
+width: fill
+line-height: 16
+link: $url
+font: $font
+color: #F29E35
+color if $fpm.dark-mode: #FFE58D
+size: $size
+
+
 
 
 
@@ -384,6 +441,7 @@ width: fill
 padding-vertical: 10
 padding-bottom: 0
 padding-horizontal: 15
+padding-horizontal if $fpm.mobile: 10
 string light-radio-active:
 string dark-radio-active:
 integer size:
@@ -391,8 +449,10 @@ margin-bottom: 5
 
 
 --- ftd.row:
+if: not $fpm.mobile
 width: fill
 border-bottom: 1
+border-bottom if $fpm.mobile: 0
 border-color: #EBEBEB
 border-color if $fpm.dark-mode: #343434
 padding-bottom: 10
@@ -416,6 +476,25 @@ link: $url
 font: $font
 size: $size
 
+--- container: ftd.main
+
+--- ftd.row:
+if: $fpm.mobile
+width: fill
+border-bottom: 1
+border-bottom if $fpm.mobile: 0
+border-color: #EBEBEB
+border-color if $fpm.dark-mode: #343434
+padding-bottom: 10
+
+
+--- ftd.text: $text
+if: $fpm.mobile
+width: fill
+line-height: 16
+link: $url
+font: $font
+size: $size
 
 
 
@@ -434,10 +513,12 @@ width: fill
 padding-vertical: 10
 padding-top: 0
 padding-horizontal: 15
+padding-horizontal if $fpm.mobile: 10
 
 --- ftd.row:
 width: fill
 border-top: 1
+border-top if $fpm.mobile: 0
 border-color: #EBEBEB
 border-color if $fpm.dark-mode: #343434
 padding-top: 10
