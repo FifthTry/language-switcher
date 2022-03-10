@@ -155,7 +155,7 @@ bottom: 8
 --- ftd.text: $switcher-text
 if: $switcher-text is not null
 font: $font
-size: 24
+size: $size
 line-height: 28
 padding-right: 5
 color: $color
