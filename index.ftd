@@ -46,8 +46,8 @@ current: English
 switcher-text: EN
 font: $roboto-assets.fonts.Roboto
 size: 14
-color: #000000
-dark-color: #FFFFFF
+text-color: #000000
+text-color-dark: #FFFFFF
 horizontal-position: -30
 
 
@@ -58,10 +58,9 @@ current: English
 switcher-text: EN
 font: $roboto-assets.fonts.Roboto
 size: 14
-color: #000000
-dark-color: #FFFFFF
+text-color: #000000
+text-color-dark: #FFFFFF
 horizontal-position: -30
-
 
 
 
@@ -104,7 +103,6 @@ $processor$: toc
 boolean open: false
 fpm.toc-item list languages: $fpm.language-toc
 optional string current: $fpm.language
-/string position: bottom-left
 optional intger vertical-position: 8
 optional integer horizontal-position: 0
 string dark-radio-default: -/fifthtry.github.io/language-switcher/images/dropdown-icons/dark/radio-default.png
@@ -121,14 +119,18 @@ string font: $roboto-assets.fonts.Roboto
 integer size: 14
 if: $languages is not empty
 z-index: 99999
-string color: #333333
-string dark-color: #FFFFFF 
 optional string switcher-text: $fpm.language
 width if $fpm.mobile: fill
 $on-click$: toggle $open
 $on-click-outside$: $open = false
-
-
+string background: #F5f5f5
+string background-dark-mode: #232324
+string text-color: #333333
+string menu-border: #cccccc
+string menu-border-dark: #2E2D2D
+string text-color-dark: #FFFFFF 
+string menu-hover-color: #F48D0C
+string current-lang-color: #009BDD
 
 --- ftd.column:
 spacing: 4
@@ -161,8 +163,8 @@ font: $font
 size: $size
 line-height: 28
 padding-right: 5
-color: $color
-color $fpm.dark-mode: $dark-color
+color: $text-color
+color if $fpm.dark-mode: $text-color-dark
 
 
 --- ftd.column:
@@ -221,12 +223,12 @@ if: not $fpm.mobile
 
 --- ftd.column:
 if: $open
-background-color: #FFFFFF
-background-color if $fpm.dark-mode: #232324
+background-color: $background
+background-color if $fpm.dark-mode: $background-dark-mode
 border-radius: 4
 border-width: 1
-border-color: #F2F2F2
-border-color if $fpm.dark-mode: #2E2D2D
+border-color: $menu-border
+border-color if $fpm.dark-mode: $menu-border-dark
 width: 180
 border-width: 1
 border-radius: 6
@@ -246,7 +248,7 @@ light-radio-active: $light-radio-active
 font: $font
 url: /
 size: $size
-
+current-lang-color: $current-lang-color
 
 --- lang-list-desktop: $o.title
 if: not $fpm.mobile
@@ -258,13 +260,15 @@ dark-radio-default: $dark-radio-default
 dark-radio-active: $dark-radio-active
 light-radio-default: $light-radio-default
 light-radio-active: $light-radio-active
-
+text-color: $text-color
+text-color-dark: $text-color-dark
+menu-hover-color: $menu-hover-color
 
 --- footer: Translation Status
 link: $fpm.translation-status-url
 font: $font
 size: $size
-
+current-lang-color: $current-lang-color
 
 --- container: ftd.main
 
@@ -281,7 +285,7 @@ light-radio-active: $light-radio-active
 font: $font
 url: /
 size: $size
-
+current-lang-color: $current-lang-color
 
 --- lang-list-desktop: $o.title
 if: not $fpm.mobile
@@ -293,7 +297,9 @@ dark-radio-default: $dark-radio-default
 dark-radio-active: $dark-radio-active
 light-radio-default: $light-radio-default
 light-radio-active: $light-radio-active
-
+text-color: $text-color
+text-color-dark: $text-color-dark
+menu-hover-color: $menu-hover-color
 
 --- lang-list-mobile: $o.title
 if: $fpm.mobile
@@ -301,12 +307,15 @@ $loop$: $languages as $o
 url: $o.url
 font: $font
 size: $size
+text-color: $text-color
+text-color-dark: $text-color-dark
+menu-hover-color: $menu-hover-color
 
 --- footer: Translation Status
 link: $fpm.translation-status-url
 font: $font
 size: $size
-
+current-lang-color: $current-lang-color
 
 -- ftd.row lang-list-desktop:
 spacing: 5 
@@ -316,6 +325,9 @@ string dark-radio-default:
 string dark-radio-active: 
 string light-radio-default: 
 string light-radio-active: 
+string menu-hover-color:
+string text-color:
+string text-color-dark:
 string font:
 integer size:
 width: fill
@@ -347,8 +359,8 @@ width: fill
 line-height: 16
 link: $url
 font: $font
-color: #6C7384
-color if $fpm.dark-mode: #FFFFFF
+color: $text-color
+color if $fpm.dark-mode: $text-color-dark
 size: $size
 
 
@@ -375,8 +387,8 @@ width: fill
 line-height: 16
 link: $url
 font: $font
-color: #F29E35
-color if $fpm.dark-mode: #FFE58D
+color: $menu-hover-color
+color if $fpm.dark-mode: $menu-hover-color
 size: $size
 
 
@@ -386,6 +398,9 @@ spacing: 5
 caption text: 
 string url:
 string font:
+string text-color:
+string text-color-dark:
+string menu-hover-color:
 integer size:
 width: fill
 padding-horizontal: 10
@@ -403,8 +418,8 @@ width: fill
 line-height: 16
 link: $url
 font: $font
-color: #6C7384
-color if $fpm.dark-mode: #FFFFFF
+color: $text-color
+color if $fpm.dark-mode: $text-color-dark
 size: $size
 
 
@@ -418,8 +433,8 @@ width: fill
 line-height: 16
 link: $url
 font: $font
-color: #F29E35
-color if $fpm.dark-mode: #FFE58D
+color: $menu-hover-color
+color if $fpm.dark-mode: $menu-hover-color
 size: $size
 
 
@@ -437,6 +452,7 @@ size: $size
 caption text: 
 string url:
 string font:
+string current-lang-color:
 width: fill
 padding-vertical: 10
 padding-bottom: 0
@@ -475,6 +491,8 @@ line-height: 16
 link: $url
 font: $font
 size: $size
+color: $current-lang-color
+color if $fpm.dark-mode: $current-lang-color
 
 --- container: ftd.main
 
@@ -495,6 +513,8 @@ line-height: 16
 link: $url
 font: $font
 size: $size
+color: $current-lang-color
+color if $fpm.dark-mode: $current-lang-color
 
 
 
@@ -509,6 +529,7 @@ caption footer:
 string link:
 string font:
 integer size:
+string current-lang-color:
 width: fill
 padding-vertical: 10
 padding-top: 0
@@ -529,6 +550,8 @@ line-height: 16
 link: $link
 font: $font
 size: $size
+color: $current-lang-color
+color if $fpm.dark-mode: $current-lang-color
 
 
 
