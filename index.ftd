@@ -139,23 +139,41 @@ spacing: 4
 if: not $fpm.dark-mode
 src: $light-lang-icon
 anchor: parent
-right: -5
-top: -5
+right: -27
+top: -3
 
 
 --- ftd.image: 
 if: $fpm.dark-mode
 src: $dark-lang-icon
 anchor: parent
-right: -5
-top: -5
+right: -27
+top: -3
+
+
+--- ftd.row:
+if: not $fpm.dark-mode
+
+--- ftd.image:
+if: not $fpm.mobile
+src: $light-polygon-down
+anchor: parent
+right: -30
+bottom: -18
+
+--- container: ftd.main
+
+--- ftd.row:
+if: $fpm.dark-mode
 
 --- ftd.image:
 if: not $fpm.mobile
 src: $dark-polygon-down
 anchor: parent
-right: -5
-bottom: 8
+right: -30
+bottom: -18
+
+--- container: ftd.main
 
 --- ftd.text: $switcher-text
 if: $switcher-text is not null
