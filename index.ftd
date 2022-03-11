@@ -130,7 +130,9 @@ string menu-border: #cccccc
 string menu-border-dark: #2E2D2D
 string text-color-dark: #FFFFFF 
 string menu-hover-color: #F48D0C
-string current-lang-color: #009BDD
+string current-lang-color: #F48D0C
+string footer-lang-color: #61B7F5
+
 
 --- ftd.column:
 spacing: 4
@@ -286,7 +288,7 @@ menu-hover-color: $menu-hover-color
 link: $fpm.translation-status-url
 font: $font
 size: $size
-current-lang-color: $current-lang-color
+footer-lang-color: $footer-lang-color
 
 --- container: ftd.main
 
@@ -333,7 +335,7 @@ menu-hover-color: $menu-hover-color
 link: $fpm.translation-status-url
 font: $font
 size: $size
-current-lang-color: $current-lang-color
+footer-lang-color: $footer-lang-color
 
 -- ftd.row lang-list-desktop:
 spacing: 5 
@@ -547,7 +549,7 @@ caption footer:
 string link:
 string font:
 integer size:
-string current-lang-color:
+string footer-lang-color:
 width: fill
 padding-vertical: 10
 padding-top: 0
@@ -568,8 +570,8 @@ line-height: 16
 link: $link
 font: $font
 size: $size
-color: $current-lang-color
-color if $fpm.dark-mode: $current-lang-color
+color: $footer-lang-color
+color if $fpm.dark-mode: $footer-lang-color
 
 
 
