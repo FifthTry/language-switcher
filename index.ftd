@@ -1,6 +1,6 @@
 -- import: fpm
 -- import: fifthtry.github.io/package-doc/doc as pd
--- import: fifthtry.github.io/package-doc/assets
+-- import: fifthtry.github.io/language-switcher/assets
 
 -- ftd.column:
 padding-horizontal: 50
