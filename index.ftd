@@ -129,7 +129,7 @@ right: -27
 top: -1
 
 --- ftd.row:
-if: not $fpm.dark-mode
+if: not $ftd.dark-mode
 
 --- ftd.image:
 src: $light-polygon-down
