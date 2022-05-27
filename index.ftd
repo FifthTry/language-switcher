@@ -12,6 +12,7 @@ padding-horizontal: 50
 padding-vertical: 20
 width: fill
 background-color: $fpm.color.main.background.base
+min-height: 1600
 
 
 -- pd.package: Language Switcher
