@@ -98,10 +98,10 @@ horizontal-position: -30
 -- fpm.toc-item list languages:
 $processor$: toc
 
-- English: /
-- Hindi: /hi
-- Spanish: /es
-- German: /de
+- English: index.html
+- Hindi: index.html
+- Spanish: index.html
+- German: index.html
 
 
 
